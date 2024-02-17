@@ -93,24 +93,33 @@ public class flipfive {
             }
 
             // Flip Left
-            if((row-1) >= 0 && (row-1) < 3) {
+            if(!outOfBounds(row-1, col)) {
                 output[row-1][col] = !output[row-1][col];
             }
             // Flip Right
-            if((row+1) >= 0 && (row+1) < 3) {
+            if(!outOfBounds(row+1, col)) {
                 output[row+1][col] = !output[row+1][col];
             }
             // Flip Top
-            if((col+1) >= 0 && (col+1) < 3) {
+            if(!outOfBounds(row, col+1)) {
                 output[row][col+1] = !output[row][col+1];
             }
             // Flip Bottom
-            if((col-1) >= 0 && (col-1) < 3) {
+            if(!outOfBounds(row, col-1)) {
                 output[row][col-1] = !output[row][col-1];
             }
+            
             // Flip Middle
             output[row][col] = !output[row][col];
             return output;
+        }
+
+        public boolean outOfBounds(int row, int col) {
+            if(row < 0 || col < 0) 
+                return true;
+            if(row > 2 || col > 2) 
+                return true;
+            return false;
         }
 
         @Override
